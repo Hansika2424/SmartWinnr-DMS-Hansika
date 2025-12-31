@@ -393,18 +393,7 @@ export const environment = {
   apiUrl: "https://your-api-domain.com/api",
 };
 ```
-## Support & Contributing
 
-For issues or questions:
-
-1. Check the troubleshooting section
-2. Review the API endpoints documentation
-3. Check console for error messages
-4. Review network tab in browser DevTools
-
-## License
-
-MIT License - Feel free to use this project for personal and commercial use.
 
 ## Author
 
