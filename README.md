@@ -158,6 +158,8 @@ ng serve
 - Drag-and-drop file upload
 - Tag management system
 
+### Sample images of DMS
+
 <img width="1918" height="946" alt="image" src="https://github.com/user-attachments/assets/ebff7959-8867-48e4-a9c9-5e680a1468bd" />
 <img width="1915" height="943" alt="image" src="https://github.com/user-attachments/assets/e27e8c6a-55a9-4ae1-8926-a7fe2d3b6bf3" />
 
