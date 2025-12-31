@@ -391,44 +391,6 @@ export const environment = {
   apiUrl: "https://your-api-domain.com/api",
 };
 ```
-
-### Backend Deployment
-
-1. Set `NODE_ENV=production`
-2. Use a production MongoDB instance
-3. Use a secure JWT_SECRET
-4. Deploy with PM2, Docker, or cloud platform (Heroku, AWS, DigitalOcean)
-
-### Frontend Deployment
-
-1. Deploy `dist/dms-frontend/` to:
-   - Vercel
-   - Netlify
-   - AWS S3 + CloudFront
-   - Any static hosting service
-
-## Performance Tips
-
-- Images are lazy loaded
-- Documents use pagination (10 per page)
-- CSS is minified in production
-- Bundle is optimized with Angular CLI
-- Consider adding image compression
-
-## Future Enhancements
-
-- Advanced search with filters
-- Document preview/viewer
-- Real-time collaboration
-- Document commenting
-- File versioning UI
-- User roles and permissions
-- Audit logs
-- Full-text search
-- Cloud storage integration (AWS S3, Google Cloud)
-- Two-factor authentication
-- Email notifications
-
 ## Support & Contributing
 
 For issues or questions:
@@ -444,8 +406,7 @@ MIT License - Feel free to use this project for personal and commercial use.
 
 ## Author
 
-Document Management System v1.0.0
+Hansika Srivastava 
 
 ---
 
-**Happy documenting!** 📋✨
