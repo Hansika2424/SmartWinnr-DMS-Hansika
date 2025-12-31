@@ -1,0 +1,8 @@
+{
+  "extends": "@angular/cli/presets/package.json",
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false,
+    "defaultCollection": "@angular/cli"
+  }
+}

@@ -1,0 +1,101 @@
+<div class="upload-container">
+  <div class="upload-card">
+    <h1>Upload Document</h1>
+    <p class="subtitle">Share your files securely</p>
+
+    <div *ngIf="error" class="alert alert-error">
+      {{ error }}
+    </div>
+
+    <div *ngIf="success" class="alert alert-success">
+      Document uploaded successfully! Redirecting to dashboard...
+    </div>
+
+    <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+      <!-- File Upload Zone -->
+      <div class="drop-zone" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (drop)="onDrop($event)">
+        <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none"
+          [accept]="'image/*,.pdf,.doc,.docx,.xls,.xlsx,.txt,.zip'" />
+        <div class="drop-zone-content">
+          <svg class="upload-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+          </svg>
+          <p class="drop-text">Drag and drop your file here</p>
+          <p class="drop-subtext">or</p>
+          <button type="button" class="btn btn-secondary" (click)="fileInput.click()">
+            Select File
+          </button>
+        </div>
+        <div *ngIf="selectedFile" class="file-info">
+          <p class="file-name">{{ selectedFile.name }}</p>
+          <p class="file-size">{{ (selectedFile.size / 1024 / 1024).toFixed(2) }} MB</p>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="form-group">
+        <label for="title">Document Title *</label>
+        <input type="text" id="title" class="form-control" formControlName="title"
+          [class.is-invalid]="f['title'].invalid && (f['title'].dirty || f['title'].touched)"
+          placeholder="Enter document title" />
+        <div *ngIf="f['title'].invalid && (f['title'].dirty || f['title'].touched)" class="error-message">
+          Title is required
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Description</label>
+        <textarea id="description" class="form-control" formControlName="description"
+          placeholder="Add a description (optional)" rows="3"></textarea>
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select id="category" class="form-control" formControlName="category">
+          <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+        </select>
+      </div>
+
+      <!-- Tags -->
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <div class="tag-input-group">
+          <input type="text" id="tags" class="form-control" [(ngModel)]="currentTag"
+            [ngModelOptions]="{standalone: true}" placeholder="Add a tag and press Enter or click Add"
+            (keyup.enter)="addTag()" />
+          <button type="button" class="btn btn-secondary" (click)="addTag()">Add</button>
+        </div>
+
+        <div class="tags-container">
+          <span *ngFor="let tag of tags; let i = index" class="tag">
+            {{ tag }}
+            <button type="button" class="tag-remove" (click)="removeTag(i)">×</button>
+          </span>
+        </div>
+      </div>
+
+      <!-- Public Checkbox -->
+      <div class="form-group checkbox-group">
+        <label for="isPublic">
+          <input type="checkbox" id="isPublic" formControlName="isPublic" />
+          <span>Make this document public</span>
+        </label>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary" [disabled]="loading || !selectedFile">
+          {{ loading ? 'Uploading...' : 'Upload Document' }}
+        </button>
+        <a routerLink="/dashboard" class="btn btn-secondary">Cancel</a>
+      </div>
+
+      <!-- Progress -->
+      <div *ngIf="uploadProgress > 0" class="progress">
+        <div class="progress-bar" [style.width.%]="uploadProgress"></div>
+      </div>
+    </form>
+  </div>
+</div>
